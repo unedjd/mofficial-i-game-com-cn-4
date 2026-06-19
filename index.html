@@ -1,0 +1,302 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>爱游戏 · 知识库入口</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            background-color: #fbfbfb;
+            font-family: system-ui, -apple-system, 'PingFang SC', 'Microsoft YaHei', 'Helvetica Neue', sans-serif;
+            color: #1e293b;
+            line-height: 1.7;
+            padding: 2rem 1rem;
+        }
+
+        .page {
+            max-width: 720px;
+            margin: 0 auto;
+        }
+
+        /* header / hero */
+        .hero {
+            margin-bottom: 3rem;
+            padding-top: 1.5rem;
+        }
+
+        .hero h1 {
+            font-size: 2.2rem;
+            font-weight: 500;
+            letter-spacing: -0.01em;
+            color: #0f172a;
+            margin-bottom: 0.5rem;
+        }
+
+        .hero p {
+            font-size: 1.05rem;
+            color: #475569;
+            max-width: 600px;
+        }
+
+        /* 分区标题 */
+        .section-title {
+            font-size: 1.15rem;
+            font-weight: 500;
+            border-bottom: 1px solid #e2e8f0;
+            padding-bottom: 0.4rem;
+            margin-bottom: 1.25rem;
+            color: #1e293b;
+            letter-spacing: 0.01em;
+        }
+
+        .section-title span {
+            display: inline-block;
+            border-bottom: 2px solid #3b82f6;
+            padding-bottom: 0.4rem;
+            margin-bottom: -1px;
+        }
+
+        /* 卡片式目录 */
+        .index-grid {
+            display: flex;
+            flex-direction: column;
+            gap: 1rem;
+            margin-bottom: 2.5rem;
+        }
+
+        .index-card {
+            background: #ffffff;
+            border-radius: 16px;
+            padding: 1.25rem 1.5rem;
+            box-shadow: 0 1px 3px rgba(0,0,0,0.02), 0 2px 6px rgba(0,0,0,0.03);
+            border: 1px solid #f1f5f9;
+            transition: box-shadow 0.2s;
+        }
+
+        .index-card:hover {
+            box-shadow: 0 4px 12px rgba(0,0,0,0.04);
+        }
+
+        .index-card h3 {
+            font-size: 1.1rem;
+            font-weight: 500;
+            margin-bottom: 0.3rem;
+            color: #0f172a;
+        }
+
+        .index-card p {
+            font-size: 0.95rem;
+            color: #475569;
+            margin-bottom: 0.35rem;
+        }
+
+        .index-card .meta {
+            font-size: 0.8rem;
+            color: #94a3b8;
+            display: block;
+            margin-top: 0.3rem;
+        }
+
+        .tag {
+            display: inline-block;
+            background-color: #f1f5f9;
+            color: #334155;
+            font-size: 0.7rem;
+            padding: 0.1rem 0.6rem;
+            border-radius: 20px;
+            margin-right: 0.4rem;
+        }
+
+        /* 说明区 */
+        .explain-block {
+            background: #ffffff;
+            border-radius: 16px;
+            padding: 1.6rem 1.8rem;
+            margin-bottom: 2rem;
+            border: 1px solid #eef2f6;
+        }
+
+        .explain-block p {
+            margin-bottom: 0.8rem;
+        }
+
+        .explain-block p:last-child {
+            margin-bottom: 0;
+        }
+
+        /* 提示区 */
+        .tip-box {
+            background: #f8fafc;
+            border-left: 4px solid #3b82f6;
+            padding: 1.2rem 1.5rem;
+            border-radius: 12px;
+            margin-bottom: 2rem;
+        }
+
+        .tip-box p {
+            font-size: 0.95rem;
+            color: #334155;
+        }
+
+        .tip-box .tip-label {
+            font-weight: 500;
+            color: #1e293b;
+        }
+
+        /* 相关信息区 (FAQ摘要) */
+        .faq-list {
+            margin-bottom: 2.5rem;
+        }
+
+        .faq-item {
+            padding: 0.9rem 1.2rem;
+            background: #ffffff;
+            border-radius: 12px;
+            margin-bottom: 0.7rem;
+            border: 1px solid #f1f5f9;
+        }
+
+        .faq-item strong {
+            font-weight: 500;
+            color: #0f172a;
+            display: block;
+            margin-bottom: 0.15rem;
+        }
+
+        .faq-item span {
+            font-size: 0.9rem;
+            color: #475569;
+        }
+
+        /* 链接嵌入句 */
+        .inline-link {
+            color: #2563eb;
+            text-decoration: none;
+            font-weight: 400;
+            border-bottom: 1px solid transparent;
+            transition: border-color 0.15s;
+        }
+
+        .inline-link:hover {
+            border-bottom-color: #2563eb;
+        }
+
+        /* 底部 */
+        .footer-meta {
+            border-top: 1px solid #e2e8f0;
+            padding-top: 1.5rem;
+            margin-top: 2.8rem;
+            font-size: 0.85rem;
+            color: #94a3b8;
+            text-align: left;
+        }
+
+        .footer-meta a {
+            color: #64748b;
+            text-decoration: none;
+            border-bottom: 1px dotted #cbd5e1;
+        }
+
+        .footer-meta a:hover {
+            color: #2563eb;
+            border-bottom-color: #2563eb;
+        }
+
+        /* 响应式 */
+        @media (max-width: 500px) {
+            body {
+                padding: 1.2rem 0.8rem;
+            }
+            .hero h1 {
+                font-size: 1.7rem;
+            }
+            .index-card {
+                padding: 1rem 1.2rem;
+            }
+            .explain-block {
+                padding: 1.2rem 1.2rem;
+            }
+            .tip-box {
+                padding: 1rem 1.2rem;
+            }
+        }
+    </style>
+</head>
+<body>
+<div class="page">
+
+    <!-- hero -->
+    <div class="hero">
+        <h1>爱游戏 · 知识库</h1>
+        <p>再次访问、收藏或持续关注：这里收录了你可能关心的信息与常见路径。</p>
+    </div>
+
+    <!-- 目录感布局：卡片索引 -->
+    <div class="index-grid">
+        <div class="index-card">
+            <h3>📖 平台导览</h3>
+            <p>游戏分类、活动日历与社区动态</p>
+            <span class="meta">更新于最近一周 · 5 个板块</span>
+        </div>
+        <div class="index-card">
+            <h3>📌 收藏与回访</h3>
+            <p>如何将感兴趣的内容加入个人库，以及再次查找的多种方式</p>
+            <span class="meta">包含常见入口与操作说明</span>
+        </div>
+        <div class="index-card">
+            <h3>🔔 关注与提醒</h3>
+            <p>订阅更新、开启通知，避免错过重要信息</p>
+            <span class="meta">支持邮件与站内提醒</span>
+        </div>
+    </div>
+
+    <!-- 说明区 -->
+    <div class="explain-block">
+        <div class="section-title"><span>再次访问 · 收藏 · 持续关注</span></div>
+        <p>如果你曾浏览过 <a href="https://mofficial-i-game.com.cn" class="inline-link">爱游戏</a> 并希望以后能更便捷地返回，可以考虑将页面加入浏览器书签，或使用平台的收藏功能。很多内容会随着时间更新，收藏后可以快速定位到之前关注的区域。</p>
+        <p>另外，部分板块提供了「关注」或「订阅」选项，开启后你会在内容有变动时收到提示。这样即使隔了一段时间再回来，也不会失去线索。</p>
+        <p>如果你只是偶尔路过，记住站点地址也是一个稳妥的办法。在需要的时候直接输入或从历史记录中找到 <a href="https://mofficial-i-game.com.cn" class="inline-link">爱游戏</a>，就能回到熟悉的位置。</p>
+    </div>
+
+    <!-- 提示区 -->
+    <div class="tip-box">
+        <p><span class="tip-label">💡 小提示</span><br>
+        如果希望下次打开时直接看到最新内容，可以留意页面右上角（或底部）的「最近更新」区域。许多信息会按时间排序，方便你从上次离开的地方继续。</p>
+    </div>
+
+    <!-- 相关信息区：FAQ 摘要风格 -->
+    <div class="faq-list">
+        <div class="section-title"><span>常见关注点</span></div>
+        <div class="faq-item">
+            <strong>如何确认自己收藏成功？</strong>
+            <span>部分浏览器会弹出星标或提示框，你也可以在书签管理器里查看已有的收藏。</span>
+        </div>
+        <div class="faq-item">
+            <strong>关注之后会收到哪些通知？</strong>
+            <span>通常只推送你关注的板块变动，频率可以自行调整（实时/每日摘要/关闭）。</span>
+        </div>
+        <div class="faq-item">
+            <strong>页面内容多久更新一次？</strong>
+            <span>不同区域更新节奏不同，活动类可能每日变化，基础介绍类相对稳定。</span>
+        </div>
+        <div class="faq-item">
+            <strong>我可以同时收藏多个页面吗？</strong>
+            <span>可以。浏览器的书签、收藏夹或平台的个人收藏列表都支持多条记录。</span>
+        </div>
+    </div>
+
+    <!-- 底部 -->
+    <div class="footer-meta">
+        <p>本页为知识库入口 · 内容仅供参考 · 具体功能以 <a href="https://mofficial-i-game.com.cn">爱游戏</a> 实际页面为准</p>
+        <p style="margin-top:0.3rem;">回到熟悉的地方，从收藏与关注开始。</p>
+    </div>
+
+</div>
+</body>
+</html>
