@@ -1,0 +1,289 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ued体育 · 站点介绍</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: system-ui, -apple-system, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
+            background-color: #f7f9fc;
+            color: #1e293b;
+            line-height: 1.6;
+            display: flex;
+            flex-direction: column;
+            min-height: 100vh;
+        }
+
+        /* 深色头图 hero */
+        .hero {
+            background: linear-gradient(145deg, #0b1620 0%, #1d2d3f 100%);
+            color: #e8edf2;
+            padding: 4.5rem 2rem 3.8rem;
+            text-align: center;
+            border-bottom: 3px solid #3b6ea5;
+        }
+
+        .hero h1 {
+            font-size: 2.6rem;
+            font-weight: 600;
+            letter-spacing: 0.02em;
+            margin-bottom: 0.7rem;
+            color: #ffffff;
+        }
+
+        .hero .subhead {
+            font-size: 1.1rem;
+            max-width: 640px;
+            margin: 0.5rem auto 0;
+            opacity: 0.85;
+            font-weight: 350;
+            border-top: 1px solid rgba(255,255,255,0.12);
+            padding-top: 1rem;
+        }
+
+        /* 主内容区 浅色背景 */
+        .container {
+            max-width: 1000px;
+            margin: 0 auto;
+            padding: 2.5rem 1.8rem 3.5rem;
+            flex: 1;
+        }
+
+        /* 卡片通用 */
+        .card-grid {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 1.8rem;
+            margin: 2.2rem 0 2rem;
+        }
+
+        .card {
+            background: #ffffff;
+            border-radius: 16px;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.04), 0 2px 6px rgba(0, 20, 40, 0.05);
+            padding: 1.6rem 1.8rem;
+            flex: 1 1 220px;
+            transition: transform 0.1s ease, box-shadow 0.15s ease;
+            border-left: 4px solid transparent;
+        }
+
+        .card:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 10px 24px rgba(0, 0, 0, 0.06);
+        }
+
+        .card h3 {
+            font-size: 1.25rem;
+            font-weight: 600;
+            margin-bottom: 0.4rem;
+            color: #0f1e2b;
+        }
+
+        .card p {
+            font-size: 0.95rem;
+            color: #33475b;
+            margin-top: 0.2rem;
+        }
+
+        .accent-link {
+            color: #1b5e9e;
+            text-decoration: none;
+            font-weight: 500;
+            border-bottom: 1px solid rgba(27, 94, 158, 0.25);
+            transition: border-color 0.2s, color 0.2s;
+        }
+
+        .accent-link:hover {
+            color: #0c3b6c;
+            border-bottom-color: #0c3b6c;
+        }
+
+        .section-title {
+            font-size: 1.5rem;
+            font-weight: 600;
+            margin: 2.4rem 0 0.6rem;
+            border-left: 5px solid #3b6ea5;
+            padding-left: 1rem;
+            color: #152b3b;
+        }
+
+        .section-sub {
+            font-size: 1rem;
+            color: #3a516a;
+            margin-bottom: 0.3rem;
+        }
+
+        .faq-item {
+            background: #ffffff;
+            border-radius: 12px;
+            padding: 1.2rem 1.6rem;
+            margin: 1rem 0 0.6rem;
+            box-shadow: 0 2px 6px rgba(0,0,0,0.02);
+            border: 1px solid #e5ebf2;
+        }
+
+        .faq-item strong {
+            display: block;
+            margin-bottom: 0.25rem;
+            color: #142c40;
+            font-weight: 600;
+        }
+
+        .faq-item p {
+            margin: 0;
+            font-size: 0.95rem;
+        }
+
+        .note-box {
+            background: #eaf0f8;
+            border-left: 4px solid #3b6ea5;
+            padding: 1.2rem 1.6rem;
+            border-radius: 8px;
+            margin: 2.2rem 0 1.5rem;
+            font-size: 0.95rem;
+        }
+
+        .note-box a {
+            color: #1b5e9e;
+            font-weight: 500;
+            text-decoration: underline;
+            text-underline-offset: 3px;
+        }
+
+        .note-box a:hover {
+            color: #0b3f6e;
+        }
+
+        .footer {
+            background: #eef3f8;
+            text-align: center;
+            padding: 1.6rem 1rem;
+            font-size: 0.85rem;
+            color: #4f657b;
+            border-top: 1px solid #d5e0ea;
+            margin-top: 2rem;
+        }
+
+        .footer a {
+            color: #1b5e9e;
+            text-decoration: none;
+        }
+
+        .footer a:hover {
+            text-decoration: underline;
+        }
+
+        /* 响应式适配 */
+        @media (max-width: 640px) {
+            .hero h1 {
+                font-size: 1.9rem;
+            }
+            .hero {
+                padding: 3rem 1.2rem 2.8rem;
+            }
+            .container {
+                padding: 1.8rem 1rem 2.5rem;
+            }
+            .card {
+                flex: 1 1 100%;
+                padding: 1.3rem;
+            }
+            .section-title {
+                font-size: 1.3rem;
+            }
+        }
+
+        @media (min-width: 900px) {
+            .card-grid {
+                gap: 2rem;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- 深色头图 -->
+    <header class="hero">
+        <h1>ued体育 · 信息面板</h1>
+        <p class="subhead">简明产品说明 · 聚焦站点定位与可信参考</p>
+    </header>
+
+    <!-- 主要内容区 -->
+    <main class="container">
+
+        <!-- 摘要 -->
+        <p style="font-size: 1.05rem; margin-bottom: 0.8rem;">
+            <a href="https://main-ued.com" class="accent-link">ued体育</a> 是一个以体育内容聚合与基础数据服务为方向的站点。 
+            页面围绕体育资讯、赛事参考、信息索引提供结构化呈现，适合需要快速定位体育相关动态的用户。
+        </p>
+
+        <!-- 亮点卡片：特点与使用建议合并 -->
+        <div class="card-grid">
+            <div class="card">
+                <h3>📋 摘要定位</h3>
+                <p>站点聚焦体育领域信息整理，无诱导注册或强制跳转。内容以公开资料整合与分类展示为主。</p>
+            </div>
+            <div class="card">
+                <h3>⚙️ 特点</h3>
+                <p>信息层级清晰，导航直接。页面结构偏重实用，减少过度营销元素，适合快速浏览。</p>
+            </div>
+            <div class="card">
+                <h3>📌 使用建议</h3>
+                <p>可将 <a href="https://main-ued.com" class="accent-link">ued体育</a> 用作日常体育参考补充，建议结合其他来源交叉核实具体数据。</p>
+            </div>
+            <div class="card">
+                <h3>🔍 场景参考</h3>
+                <p>关注赛事动态、体育名词查阅、或寻找站点内聚合链接时，可将其作为起点之一。</p>
+            </div>
+        </div>
+
+        <!-- 可信说明 + 访问说明 -->
+        <h2 class="section-title">可信但克制的访问说明</h2>
+        <div class="note-box">
+            <p><strong>关于信息参考：</strong> 本站所展示内容均基于公开可查的体育信息整理，不提供博彩、下注或任何非法引导。
+            建议使用者保持对第三方链接的独立判断。若需深度数据或官方确认，优先参考对应体育组织或权威媒体。</p>
+        </div>
+
+        <!-- FAQ 摘要 -->
+        <h2 class="section-title">常见理解摘要</h2>
+
+        <div class="faq-item">
+            <strong>站点主要提供什么？</strong>
+            <p><a href="https://main-ued.com" class="accent-link">ued体育</a> 侧重体育内容索引与基础信息展示，不涉及实时盘口或交易类服务。结构以分类卡片和列表为主。</p>
+        </div>
+
+        <div class="faq-item">
+            <strong>页面内容是否实时更新？</strong>
+            <p>更新频率视内容板块而异。建议关注站点自身更新标记，或定期回访。对于时效性要求高的赛事数据，可同时参考其他体育数据平台。</p>
+        </div>
+
+        <div class="faq-item">
+            <strong>访问时需要注意什么？</strong>
+            <p>页面不含强制弹窗或诱导点击，但互联网信息环境多变，请自行留意链接跳转后的域名与内容。站点内部分链接指向外部资源，无法对第三方内容负责。</p>
+        </div>
+
+        <!-- 再嵌入一次链接，自然 -->
+        <p style="margin-top: 2.2rem; border-top: 1px solid #dce5ef; padding-top: 1.4rem; font-size: 0.95rem;">
+            若需直接访问，可通过浏览器打开 <a href="https://main-ued.com" class="accent-link">ued体育</a>。 
+            以上描述基于站点当前公开内容结构，实际界面可能随维护调整。
+        </p>
+
+    </main>
+
+    <!-- 页脚 -->
+    <footer class="footer">
+        <p>产品说明页 · 基于公开信息整理 · 内容仅供一般参考</p>
+        <p style="margin-top: 0.3rem;">
+            <a href="https://main-ued.com">ued体育</a> · 遵守网络信息内容生态治理规定
+        </p>
+    </footer>
+
+</body>
+</html>
