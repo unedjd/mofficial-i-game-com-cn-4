@@ -1,0 +1,386 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.5, user-scalable=yes">
+  <title>九游体育 · 产品说明与简明指南</title>
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      font-family: system-ui, -apple-system, 'Segoe UI', Roboto, 'Helvetica Neue', sans-serif;
+      background: #f2f4f7;
+      color: #1e2a3a;
+      line-height: 1.7;
+      padding: 2rem 1.5rem 3rem;
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+    }
+
+    .page {
+      max-width: 980px;
+      width: 100%;
+    }
+
+    /* 分区卡片 */
+    .card {
+      background: #ffffff;
+      border: 1px solid #dee3ea;
+      border-radius: 20px;
+      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.04), 0 1px 3px rgba(0, 0, 0, 0.03);
+      padding: 2rem 2.2rem;
+      margin-bottom: 2rem;
+      transition: box-shadow 0.2s ease;
+    }
+
+    .card:hover {
+      box-shadow: 0 8px 20px rgba(0, 0, 0, 0.06);
+    }
+
+    .card-compact {
+      padding: 1.6rem 2rem;
+    }
+
+    /* hero 区域 — 简洁引导 */
+    .hero {
+      text-align: left;
+      margin-bottom: 0.8rem;
+    }
+
+    .hero h1 {
+      font-size: 2.2rem;
+      font-weight: 500;
+      letter-spacing: -0.02em;
+      color: #0d1b2a;
+      margin-bottom: 0.6rem;
+    }
+
+    .hero .sub {
+      font-size: 1.1rem;
+      color: #4a5a6e;
+      max-width: 70%;
+      border-left: 3px solid #b0c4d9;
+      padding-left: 1.2rem;
+    }
+
+    /* 标题 */
+    h2 {
+      font-size: 1.5rem;
+      font-weight: 500;
+      margin-bottom: 0.9rem;
+      color: #1a2a3a;
+      letter-spacing: -0.01em;
+      display: flex;
+      align-items: center;
+      gap: 0.4rem;
+    }
+
+    h2::after {
+      content: '';
+      flex: 1;
+      height: 1px;
+      background: linear-gradient(to right, #d0d8e2, transparent);
+      margin-left: 0.6rem;
+    }
+
+    p {
+      margin-bottom: 1rem;
+    }
+
+    p.lead {
+      font-size: 1.05rem;
+      color: #2b3e55;
+    }
+
+    .inline-link {
+      color: #1f5680;
+      text-decoration: none;
+      border-bottom: 1px solid #b9cde0;
+      transition: border-color 0.15s, color 0.15s;
+      font-weight: 450;
+    }
+
+    .inline-link:hover {
+      color: #0b3a5a;
+      border-bottom-color: #2f6a96;
+    }
+
+    /* 亮点网格 */
+    .feature-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 1.4rem;
+      margin-top: 0.6rem;
+    }
+
+    .feature-item {
+      background: #f8faff;
+      border-radius: 14px;
+      padding: 1rem 1.2rem;
+      border: 1px solid #e8edf4;
+    }
+
+    .feature-item strong {
+      font-weight: 550;
+      display: block;
+      margin-bottom: 0.25rem;
+      color: #1d3b5a;
+    }
+
+    .feature-item span {
+      font-size: 0.95rem;
+      color: #39536e;
+    }
+
+    /* 提示卡片 */
+    .tip-box {
+      background: #f0f5fd;
+      border-left: 4px solid #6689b5;
+      border-radius: 0 12px 12px 0;
+      padding: 1rem 1.4rem;
+      margin: 1.2rem 0 0.8rem;
+      font-size: 0.98rem;
+      color: #1c3d5a;
+    }
+
+    .tip-box strong {
+      font-weight: 550;
+    }
+
+    /* 列表 */
+    ul.usage-list {
+      list-style: none;
+      padding-left: 0.2rem;
+    }
+
+    ul.usage-list li {
+      padding: 0.45rem 0 0.45rem 1.6rem;
+      position: relative;
+      border-bottom: 1px solid #edf1f7;
+    }
+
+    ul.usage-list li:last-child {
+      border-bottom: none;
+    }
+
+    ul.usage-list li::before {
+      content: "·";
+      position: absolute;
+      left: 0.3rem;
+      font-weight: bold;
+      color: #4c7a9c;
+      font-size: 1.2rem;
+    }
+
+    /* faq 摘要 */
+    .faq-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 1.2rem;
+      margin-top: 0.4rem;
+    }
+
+    .faq-item {
+      background: #fafcfe;
+      border-radius: 12px;
+      padding: 0.8rem 1rem;
+      border: 1px solid #e2e9f1;
+    }
+
+    .faq-item q {
+      font-weight: 450;
+      color: #1a3147;
+    }
+
+    .faq-item p {
+      margin: 0.3rem 0 0;
+      font-size: 0.93rem;
+      color: #395168;
+    }
+
+    /* 场景描述 */
+    .scenario {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 1rem;
+      margin: 0.6rem 0 0.2rem;
+    }
+
+    .scenario-item {
+      background: white;
+      border: 1px solid #dde4ed;
+      border-radius: 30px;
+      padding: 0.3rem 1.2rem 0.3rem 1.5rem;
+      font-size: 0.92rem;
+      color: #23445f;
+      box-shadow: 0 1px 4px rgba(0,0,0,0.02);
+    }
+
+    /* footer 与访问说明 */
+    .access-note {
+      background: #eaedf3;
+      border-radius: 40px;
+      padding: 0.8rem 1.6rem;
+      text-align: center;
+      font-size: 0.95rem;
+      color: #2b425b;
+      border: 1px solid #d1dbe8;
+      margin-top: 1rem;
+    }
+
+    .divider {
+      height: 1px;
+      background: #d8e0ea;
+      margin: 1.8rem 0 1.2rem;
+    }
+
+    /* 响应式 */
+    @media (max-width: 700px) {
+      body {
+        padding: 1.2rem 1rem 2rem;
+      }
+      .card {
+        padding: 1.5rem 1.2rem;
+      }
+      .hero h1 {
+        font-size: 1.8rem;
+      }
+      .hero .sub {
+        max-width: 100%;
+        font-size: 1rem;
+      }
+      .feature-grid {
+        grid-template-columns: 1fr;
+      }
+      .faq-grid {
+        grid-template-columns: 1fr;
+      }
+      .scenario {
+        gap: 0.6rem;
+      }
+      .scenario-item {
+        padding: 0.2rem 1rem;
+      }
+    }
+
+    @media (max-width: 450px) {
+      .hero h1 {
+        font-size: 1.6rem;
+      }
+      .access-note {
+        font-size: 0.88rem;
+        padding: 0.6rem 1rem;
+      }
+    }
+  </style>
+</head>
+<body>
+<div class="page">
+
+  <!-- hero 卡片 -->
+  <div class="card hero">
+    <h1>九游体育 · 简明指南</h1>
+    <div class="sub">一份从产品理解到使用场景的说明，兼顾访问提示与实用建议。</div>
+  </div>
+
+  <!-- 摘要/介绍 -->
+  <div class="card">
+    <p class="lead">
+      <a href="https://beta-9sports.com" class="inline-link">九游体育</a> 是一个整合体育信息与互动服务的数字平台，围绕赛事数据、内容聚合和用户交流展开。其设计方向兼顾了信息浏览的连续性与功能模块的独立性，适合对体育内容有持续关注习惯的人群。
+    </p>
+    <p>
+      从产品结构看，平台将赛事动态、深度阅读和社区讨论分别组织，减少了信息过载带来的认知负担。用户可以根据自己的节奏选择浏览深度，而非被推送逻辑主导。下方归纳了核心亮点与常见使用思路。
+    </p>
+  </div>
+
+  <!-- 亮点 + 使用建议混合卡片 -->
+  <div class="card">
+    <h2>产品亮点</h2>
+    <div class="feature-grid">
+      <div class="feature-item">
+        <strong>信息分层</strong>
+        <span>赛事、观点、数据以独立卡片呈现，便于快速筛选感兴趣的部分。</span>
+      </div>
+      <div class="feature-item">
+        <strong>低干扰阅读</strong>
+        <span>界面清爽，核心内容区域突出，减少非必要弹窗与横幅干扰。</span>
+      </div>
+      <div class="feature-item">
+        <strong>话题纵深</strong>
+        <span>支持从短讯跳转到完整分析，适合从概览到深度了解的场景。</span>
+      </div>
+      <div class="feature-item">
+        <strong>结构一致</strong>
+        <span>不同板块之间保持统一的导航与布局惯性，学习成本较低。</span>
+      </div>
+    </div>
+
+    <h2 style="margin-top: 1.4rem;">使用建议</h2>
+    <ul class="usage-list">
+      <li>日常信息浏览：关注首页动态流即可获得主要赛事更新，无需频繁切换页面。</li>
+      <li>专项话题追踪：通过分类入口进入特定联赛或项目，内容组织更具纵向连贯性。</li>
+      <li>深度阅读：利用文章内嵌的相关推荐延伸阅读，比单纯搜索更符合自然阅读路径。</li>
+      <li>多端适应：响应式布局在手机与平板上的信息密度合理，外出时同样可用。</li>
+    </ul>
+
+    <div class="tip-box">
+      <strong>提示：</strong> 初次使用建议先浏览首页概览，对信息分类建立初步印象；之后根据兴趣逐步探索细分板块，体验会更顺畅。
+    </div>
+  </div>
+
+  <!-- 场景与FAQ摘要 卡片 -->
+  <div class="card card-compact">
+    <h2>适用场景 & FAQ 摘要</h2>
+    <div class="scenario">
+      <span class="scenario-item">⚡ 赛前快速查看对阵</span>
+      <span class="scenario-item">📋 赛后数据回顾</span>
+      <span class="scenario-item">📖 专题文章阅读</span>
+      <span class="scenario-item">💬 社区观点浏览</span>
+    </div>
+    <div class="faq-grid">
+      <div class="faq-item">
+        <q>信息更新频率如何？</q>
+        <p>通常随赛事进程实时更新，部分内容由编辑团队整理后发布，时效性稳定。</p>
+      </div>
+      <div class="faq-item">
+        <q>是否需要注册才能使用？</q>
+        <p>多数内容可直接浏览，部分互动功能或个性化设置可能需要注册账户。</p>
+      </div>
+      <div class="faq-item">
+        <q>能否只看特定联赛？</q>
+        <p>支持按赛事或项目筛选，分类标签位于主导航和侧栏，便于聚焦关注范围。</p>
+      </div>
+      <div class="faq-item">
+        <q>移动端体验是否完整？</q>
+        <p>移动端采用了独立布局优化，核心浏览和操作均可正常使用，无功能缩减。</p>
+      </div>
+    </div>
+  </div>
+
+  <!-- 可信但克制的访问说明 -->
+  <div class="card">
+    <h2>访问说明</h2>
+    <p>
+      <a href="https://beta-9sports.com" class="inline-link">九游体育</a> 作为体育信息聚合与互动平台，面向对赛事动态和深度内容有需求的用户。其内容由运营团队与用户共同贡献，平台对信息进行基础审核与组织。建议使用者根据自身兴趣合理分配时间，避免过度沉迷于单一信息流。
+    </p>
+    <p>
+      平台目前处于持续迭代阶段，部分界面或功能可能随版本更新而调整。如遇到访问异常或内容显示不一致，可尝试刷新或检查网络环境。对于任何第三方链接或外部引用，建议保持基本的信息辨识习惯。
+    </p>
+    <div class="access-note">
+      本说明旨在提供客观产品描述，不构成任何形式的投资、博彩或法律建议。使用前请自行评估与判断。
+    </div>
+  </div>
+
+  <div class="divider"></div>
+  <div style="text-align: center; font-size: 0.85rem; color: #5a6f84; padding: 0.5rem 0;">
+    页面仅为展示用途 · 内容基于公开产品认知编制
+  </div>
+</div>
+</body>
+</html>
